@@ -18,7 +18,7 @@ It would be nice to fit into it:
 ## Dependencies
 
 The minumim dependency for this project is a library that allows us to manage the clipboard (github.com/atotto/clipboard).
-To minimize unfocused code, we could use a command and options manager such as [cobra](github.com/spf13/cobra). This has the side effect of increasing the dependencies considerably.
+To minimize unfocused code, we could use a command and options manager such as [cobra](https://github.com/spf13/cobra). This has the side effect of increasing the dependencies considerably.
 
 ## Code organization
 
