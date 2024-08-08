@@ -1,0 +1,13 @@
+env GOPATH=$WORK
+env GOCACHE=$WORK/.cache
+
+cd $git_home
+
+exec go run . --version
+stdout 'cliptool version - use scripts/build.sh for real version'
+exec scripts/build.sh
+
+exec ./cliptool --version
+stdout '\bv\d+\.\d+\.\d+'
+
+rm ./cliptool
