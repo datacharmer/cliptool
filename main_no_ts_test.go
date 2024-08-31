@@ -7,7 +7,7 @@ To execute the tests in this file, run the following:
 
 export GIT_COMMIT="$(git describe --tags)"
 go test \
-  -ldflags "-X 'github.com/datacharmer/cliptool/cmd.CliptoolVersion=$(git describe --tags)'" \
+  -ldflags "-X 'github.com/datacharmer/cliptool/cmd.CliptoolVersion=$GIT_COMMIT'" \
   --tags nots
 */
 
@@ -27,7 +27,6 @@ func TestVersion(t *testing.T) {
 	if setVersion != cmd.CliptoolVersion {
 		t.Fatalf("expected version: '%s' - got: '%s'\n", setVersion, cmd.CliptoolVersion)
 	}
-
 }
 
 func TestVersionRegexp(t *testing.T) {

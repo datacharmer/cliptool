@@ -1,0 +1,31 @@
+env GOPATH=$WORK
+env GOCACHE=$WORK/.cache
+
+cd $git_home
+# make sure that git exists
+[!exec:git] skip 'no git executable found'
+# make sure that 'git describe --tags' has a result
+exec git describe --tags
+stdout '\bv\d+\.\d+\.\d+'
+
+# save the git version to a file
+cp stdout $WORK/version.txt
+
+# compile the tool
+exec scripts/build.sh
+
+# Run the tool
+exec ./cliptool --version
+stdout '\bv\d+\.\d+\.\d+'
+
+# Check that the tool matches the git tag
+cmp stdout $WORK/version.txt
+
+exec go run main.go --version
+cmpenv stdout $WORK/the-version.txt
+stdout ${the_regexp_version}
+
+rm ./cliptool
+
+-- the-version.txt --
+$the_exact_version

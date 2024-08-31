@@ -1,6 +1,6 @@
 module github.com/datacharmer/cliptool
 
-go 1.23rc1
+go 1.23
 
 require github.com/rogpeppe/go-internal v1.12.0
 
